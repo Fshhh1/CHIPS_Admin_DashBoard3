@@ -1,6 +1,6 @@
 
 {
-  "name": "chips-admin-dashboard",
+  "name": "chips-admin-dashboard-phase2-1",
   "version": "2.1.0",
   "scripts": {
     "dev": "next dev",
