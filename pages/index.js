@@ -18,3 +18,6 @@ export default function Home() {
     </main>
   );
 }
+<li><a href="/login">Login</a></li>
+<li><a href="/federation_echo">Federation Echo</a></li>
+<li><a href="/chipx_upload">.chipx Upload</a></li>
