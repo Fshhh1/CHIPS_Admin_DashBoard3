@@ -11,6 +11,9 @@ export default function AdminDashboard() {
           <li><a className="underline hover:text-yellow-400" href="/chipx_manager">.chipx Manager</a></li>
           <li><a className="underline hover:text-yellow-400" href="/marketplace">Marketplace</a></li>
           <li><a className="underline hover:text-yellow-400" href="/developers">Developer Portal</a></li>
+          <li><a className="underline hover:text-yellow-400" href="/login">Login</a></li>
+          <li><a className="underline hover:text-yellow-400" href="/federation_echo">Federation Echo</a></li>
+          <li><a className="underline hover:text-yellow-400" href="/chipx_upload">.chipx Upload</a></li>
         </ul>
       </div>
     </main>
