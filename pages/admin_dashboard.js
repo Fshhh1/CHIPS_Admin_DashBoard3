@@ -6,9 +6,9 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     const fetchStatus = async () => {
-      const res = await fetch('/api/federation-status');
+      const res = await fetch('/api/federation-echo-stream');
       const data = await res.json();
-      setFederationStatus(data.status);
+      setFederationStatus(data.status + ' @ ' + new Date(data.timestamp).toLocaleTimeString());
     };
     fetchStatus();
     const interval = setInterval(fetchStatus, 5000);
