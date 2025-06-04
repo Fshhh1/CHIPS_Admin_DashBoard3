@@ -1,7 +1,8 @@
 
 let iaiIpsNodes = [
-  { id: 1, status: 'Active', role: 'Analytics', cognitiveLoad: 'Medium', learningMode: 'Supervised', evolutionLevel: 'Stable' },
-  { id: 2, status: 'Idle', role: 'Defense', cognitiveLoad: 'Low', learningMode: 'Unsupervised', evolutionLevel: 'Growing' }
+  { id: 1, status: 'Active', role: 'Memory', cognitiveLoad: 'Medium', learningMode: 'Supervised', evolutionLevel: 'Stable' },
+  { id: 2, status: 'Idle', role: 'Emotional', cognitiveLoad: 'Low', learningMode: 'Unsupervised', evolutionLevel: 'Growing' },
+  { id: 3, status: 'Active', role: 'Strategic', cognitiveLoad: 'High', learningMode: 'Reinforcement', evolutionLevel: 'Evolving' }
 ];
 
 export default function handler(req, res) {
