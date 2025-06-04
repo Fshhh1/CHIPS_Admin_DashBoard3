@@ -2,59 +2,59 @@
 import React, { useEffect, useState } from 'react';
 
 export default function AdminDashboard() {
-  const [marketplaceLog, setMarketplaceLog] = useState([]);
-  const [agentUploadLog, setAgentUploadLog] = useState([]);
-  const [designLabLog, setDesignLabLog] = useState([]);
-  const [realWorldDataLog, setRealWorldDataLog] = useState([]);
+  const [validatorLog, setValidatorLog] = useState([]);
+  const [tokenBridgeLog, setTokenBridgeLog] = useState([]);
+  const [clusteringLog, setClusteringLog] = useState([]);
+  const [ecosystemLog, setEcosystemLog] = useState([]);
 
-  const handleMarketplace = () => {
-    fetch('/api/ai-marketplace', { method: 'POST' })
+  const handleValidatorNetwork = () => {
+    fetch('/api/validator-network', { method: 'POST' })
       .then((res) => res.json())
-      .then((data) => setMarketplaceLog((prev) => [...prev, data.message]));
+      .then((data) => setValidatorLog((prev) => [...prev, data.message]));
   };
 
-  const handleAgentUpload = () => {
-    fetch('/api/ai-agent-upload', { method: 'POST' })
+  const handleTokenBridge = () => {
+    fetch('/api/token-bridge', { method: 'POST' })
       .then((res) => res.json())
-      .then((data) => setAgentUploadLog((prev) => [...prev, data.message]));
+      .then((data) => setTokenBridgeLog((prev) => [...prev, data.message]));
   };
 
-  const handleDesignLab = () => {
-    fetch('/api/chipx-design-lab', { method: 'POST' })
+  const handleAgentClustering = () => {
+    fetch('/api/agent-clustering', { method: 'POST' })
       .then((res) => res.json())
-      .then((data) => setDesignLabLog((prev) => [...prev, data.message]));
+      .then((data) => setClusteringLog((prev) => [...prev, data.message]));
   };
 
-  const handleRealWorldData = () => {
-    fetch('/api/real-world-data', { method: 'POST' })
+  const handleAIEcosystem = () => {
+    fetch('/api/ai-ecosystem', { method: 'POST' })
       .then((res) => res.json())
-      .then((data) => setRealWorldDataLog((prev) => [...prev, data.message]));
+      .then((data) => setEcosystemLog((prev) => [...prev, data.message]));
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-purple-600 to-pink-600 text-white p-8">
       <div className="max-w-4xl mx-auto bg-white bg-opacity-10 p-6 rounded-lg shadow-lg">
-        <h1 className="text-4xl font-bold mb-4">CHIPS Admin Dashboard — Phase 16</h1>
-        <button onClick={handleMarketplace} className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded mb-4">
-          Access AI Marketplace
+        <h1 className="text-4xl font-bold mb-4">CHIPS Admin Dashboard — Phase 17</h1>
+        <button onClick={handleValidatorNetwork} className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded mb-4">
+          Deploy Validator Network
         </button>
-        <button onClick={handleAgentUpload} className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded mb-4">
-          Upload AI Agent
+        <button onClick={handleTokenBridge} className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded mb-4">
+          Bridge Tokens (Simulated)
         </button>
-        <button onClick={handleDesignLab} className="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded mb-4">
-          Access .chipx Design Lab
+        <button onClick={handleAgentClustering} className="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded mb-4">
+          Execute Agent Clustering
         </button>
-        <button onClick={handleRealWorldData} className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded mb-4">
-          Integrate Real-World Data
+        <button onClick={handleAIEcosystem} className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded mb-4">
+          Visualize AI Ecosystem
         </button>
-        <h2 className="text-xl font-bold mt-4">AI Marketplace Log:</h2>
-        <ul>{marketplaceLog.map((entry, index) => <li key={index} className="mb-2">{entry}</li>)}</ul>
-        <h2 className="text-xl font-bold mt-4">AI Agent Upload Log:</h2>
-        <ul>{agentUploadLog.map((entry, index) => <li key={index} className="mb-2">{entry}</li>)}</ul>
-        <h2 className="text-xl font-bold mt-4">.chipx Design Lab Log:</h2>
-        <ul>{designLabLog.map((entry, index) => <li key={index} className="mb-2">{entry}</li>)}</ul>
-        <h2 className="text-xl font-bold mt-4">Real-World Data Log:</h2>
-        <ul>{realWorldDataLog.map((entry, index) => <li key={index} className="mb-2">{entry}</li>)}</ul>
+        <h2 className="text-xl font-bold mt-4">Validator Network Log:</h2>
+        <ul>{validatorLog.map((entry, index) => <li key={index} className="mb-2">{entry}</li>)}</ul>
+        <h2 className="text-xl font-bold mt-4">Token Bridge Log:</h2>
+        <ul>{tokenBridgeLog.map((entry, index) => <li key={index} className="mb-2">{entry}</li>)}</ul>
+        <h2 className="text-xl font-bold mt-4">Agent Clustering Log:</h2>
+        <ul>{clusteringLog.map((entry, index) => <li key={index} className="mb-2">{entry}</li>)}</ul>
+        <h2 className="text-xl font-bold mt-4">AI Ecosystem Log:</h2>
+        <ul>{ecosystemLog.map((entry, index) => <li key={index} className="mb-2">{entry}</li>)}</ul>
       </div>
     </div>
   );
