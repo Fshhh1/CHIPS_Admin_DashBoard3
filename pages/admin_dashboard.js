@@ -17,6 +17,15 @@ export default function AdminDashboard() {
     window.location.href = '/token_gate';
   };
 
+  const handleSpendToken = () => {
+    if (balance >= 100) {
+      setBalance(balance - 100);
+      alert('100 ChipX tokens spent for module deployment.');
+    } else {
+      alert('Insufficient tokens.');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-r from-purple-600 to-pink-600 text-white p-8">
       <div className="max-w-4xl mx-auto bg-white bg-opacity-10 p-6 rounded-lg shadow-lg">
@@ -28,6 +37,12 @@ export default function AdminDashboard() {
           className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded mb-6"
         >
           Logout
+        </button>
+        <button
+          onClick={handleSpendToken}
+          className="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded mb-6"
+        >
+          Spend 100 ChipX for Deployment
         </button>
         <h2 className="text-2xl font-bold mb-4">Federation Nodes</h2>
         <ul>
