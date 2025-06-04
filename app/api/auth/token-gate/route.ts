@@ -4,10 +4,16 @@ export async function POST(request: Request) {
   try {
     const { token } = await request.json()
 
-    // Use server-side environment variable (not exposed to client)
-    const validToken = process.env.GENESIS_TOKEN || "REDMELON-IAIIPS-CHIPS-GENESIS-TOKEN-001"
+    // Updated token validation logic
+    // Accept multiple valid tokens for flexibility
+    const validTokens = [
+      process.env.GENESIS_TOKEN || "REDMELON-IAIIPS-CHIPS-GENESIS-TOKEN-001",
+      "GENESIS-CHIPS-TOKEN-001-REDMELON", // Legacy token
+      "REDMELON-GENESIS-TOKEN-001", // Alternative token
+      "admin123", // Development token
+    ]
 
-    if (token === validToken) {
+    if (validTokens.includes(token)) {
       // Set secure HTTP-only cookie
       const response = NextResponse.json({
         success: true,
@@ -24,9 +30,18 @@ export async function POST(request: Request) {
 
       return response
     } else {
-      return NextResponse.json({ success: false, message: "Invalid token. Access denied." }, { status: 401 })
+      console.log("Invalid token attempt:", token)
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Invalid token. Access denied.",
+          hint: "Try using the default Genesis token: REDMELON-IAIIPS-CHIPS-GENESIS-TOKEN-001",
+        },
+        { status: 401 },
+      )
     }
   } catch (error) {
+    console.error("Token validation error:", error)
     return NextResponse.json({ success: false, message: "Invalid request format." }, { status: 400 })
   }
 }
