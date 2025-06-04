@@ -12,6 +12,7 @@ export default function HomePage() {
         </div>
         <h1 className="text-4xl font-bold mb-2">CHIPS://</h1>
         <p className="text-xl opacity-90">Secure Admin Dashboard & GitHub Integration</p>
+        <p className="text-sm opacity-75 mt-2">Last updated: {new Date().toLocaleDateString()}</p>
       </header>
 
       <main className="max-w-4xl mx-auto px-8 pb-8">
