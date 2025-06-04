@@ -7,44 +7,27 @@ export default function AdminDashboard() {
   const [clusteringLog, setClusteringLog] = useState([]);
   const [ecosystemLog, setEcosystemLog] = useState([]);
 
-  const handleValidatorNetwork = () => {
-    fetch('/api/validator-network', { method: 'POST' })
+  const handleFetch = (url, setLog) => {
+    fetch(url, { method: 'POST' })
       .then((res) => res.json())
-      .then((data) => setValidatorLog((prev) => [...prev, data.message]));
-  };
-
-  const handleTokenBridge = () => {
-    fetch('/api/token-bridge', { method: 'POST' })
-      .then((res) => res.json())
-      .then((data) => setTokenBridgeLog((prev) => [...prev, data.message]));
-  };
-
-  const handleAgentClustering = () => {
-    fetch('/api/agent-clustering', { method: 'POST' })
-      .then((res) => res.json())
-      .then((data) => setClusteringLog((prev) => [...prev, data.message]));
-  };
-
-  const handleAIEcosystem = () => {
-    fetch('/api/ai-ecosystem', { method: 'POST' })
-      .then((res) => res.json())
-      .then((data) => setEcosystemLog((prev) => [...prev, data.message]));
+      .then((data) => setLog((prev) => [...prev, data.message]))
+      .catch((error) => setLog((prev) => [...prev, `Error: ${error.message}`]));
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-purple-600 to-pink-600 text-white p-8">
       <div className="max-w-4xl mx-auto bg-white bg-opacity-10 p-6 rounded-lg shadow-lg">
-        <h1 className="text-4xl font-bold mb-4">CHIPS Admin Dashboard — Phase 17</h1>
-        <button onClick={handleValidatorNetwork} className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded mb-4">
+        <h1 className="text-4xl font-bold mb-4">CHIPS Admin Dashboard — Phase 18</h1>
+        <button onClick={() => handleFetch('/api/validator-network', setValidatorLog)} className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded mb-4">
           Deploy Validator Network
         </button>
-        <button onClick={handleTokenBridge} className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded mb-4">
+        <button onClick={() => handleFetch('/api/token-bridge', setTokenBridgeLog)} className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded mb-4">
           Bridge Tokens (Simulated)
         </button>
-        <button onClick={handleAgentClustering} className="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded mb-4">
+        <button onClick={() => handleFetch('/api/agent-clustering', setClusteringLog)} className="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded mb-4">
           Execute Agent Clustering
         </button>
-        <button onClick={handleAIEcosystem} className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded mb-4">
+        <button onClick={() => handleFetch('/api/ai-ecosystem', setEcosystemLog)} className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded mb-4">
           Visualize AI Ecosystem
         </button>
         <h2 className="text-xl font-bold mt-4">Validator Network Log:</h2>
