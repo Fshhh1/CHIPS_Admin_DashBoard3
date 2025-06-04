@@ -18,11 +18,11 @@ export default function AdminDashboard() {
     setIaiIpsNodes(data.iaiIpsNodes);
   };
 
-  const runIaiIpsxModule = async (nodeId, moduleName, aiTask) => {
-    const res = await fetch('/api/run-iai-ipsx', {
+  const runIaiIpsxModuleChained = async (nodeId, moduleNames) => {
+    const res = await fetch('/api/run-iai-ipsx-chained', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nodeId, moduleName, aiTask })
+      body: JSON.stringify({ nodeId, moduleNames })
     });
     const data = await res.json();
     setIaiIpsResult(data.result);
@@ -41,14 +41,14 @@ export default function AdminDashboard() {
               Node {node.id}: Status - {node.status}, Role - {node.role}, Cognitive Load - {node.cognitiveLoad}, Learning Mode - {node.learningMode}, Evolution Level - {node.evolutionLevel}
               <button
                 className="bg-yellow-500 hover:bg-yellow-600 px-2 py-1 rounded ml-2"
-                onClick={() => runIaiIpsxModule(node.id, 'sample.iai-ipsx', 'predictive analysis')}
+                onClick={() => runIaiIpsxModuleChained(node.id, ['module1.iai-ipsx', 'module2.iai-ipsx'])}
               >
-                Run .iai-ipsx Module
+                Run Chained .iai-ipsx Modules
               </button>
             </li>
           ))}
         </ul>
-        <h2 className="text-xl font-bold mb-2">.iai-ipsx Module Execution Result:</h2>
+        <h2 className="text-xl font-bold mb-2">.iai-ipsx Chained Execution Result:</h2>
         <p className="mb-4">{iaiIpsResult}</p>
       </div>
     </main>
