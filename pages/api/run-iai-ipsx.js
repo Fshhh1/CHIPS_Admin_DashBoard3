@@ -1,11 +1,15 @@
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const { nodeId, moduleName } = req.body;
+    const { nodeId, moduleName, aiTask } = req.body;
+    // Placeholder for real OpenAI API call
+    const simulatedResult = `Simulated AI result for task "${aiTask}" on module "${moduleName}" at Node ${nodeId}`;
     res.status(200).json({
       nodeId,
       moduleName,
-      result: `Simulated execution of ${moduleName} on IAI-IPS Node ${nodeId} completed successfully.`
+      aiTask,
+      result: simulatedResult,
+      tokenReward: 50
     });
   } else {
     res.status(405).json({ message: 'Method not allowed.' });
