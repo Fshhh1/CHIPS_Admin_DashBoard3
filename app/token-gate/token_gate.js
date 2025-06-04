@@ -1,1 +1,0 @@
-// Updated token_gate.js with environment variable check
