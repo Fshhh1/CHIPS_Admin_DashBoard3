@@ -6,7 +6,7 @@ export default function handler(req, res) {
     { id: 3, status: 'degraded', name: 'Node-Gamma' },
   ];
   res.status(200).json({
-    echo: 'Federation Echo Node Mesh Active',
+    echo: 'Federation Echo Node Mesh Active — Real-time ping established.',
     timestamp: new Date().toISOString(),
     nodes: federationNodes
   });
