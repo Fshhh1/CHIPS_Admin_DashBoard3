@@ -1,13 +1,15 @@
 
 export default function handler(req, res) {
   if (req.method === 'POST') {
-    const { nodeId, moduleName } = req.body;
+    const { moduleName } = req.body;
+    // Simulated real processing
     res.status(200).json({
-      nodeId,
-      moduleName,
-      result: `Simulated execution of ${moduleName} on node ${nodeId} completed successfully.`
+      message: `Module ${moduleName} executed successfully.`,
+      module: moduleName,
+      status: 'completed',
+      timestamp: new Date().toISOString()
     });
   } else {
-    res.status(405).json({ message: 'Method not allowed.' });
+    res.status(405).json({ message: 'Method Not Allowed' });
   }
 }
