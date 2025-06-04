@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 
 export default function AdminDashboard() {
   const [nodes, setNodes] = useState([]);
-  const [governanceLog, setGovernanceLog] = useState([]);
+  const [blockchainLog, setBlockchainLog] = useState([]);
+  const [distributedStatus, setDistributedStatus] = useState([]);
 
   useEffect(() => {
     fetch('/api/federation-nodes')
@@ -11,45 +12,45 @@ export default function AdminDashboard() {
       .then((data) => setNodes(data.nodes));
   }, []);
 
-  const handleCollaborativeAI = () => {
-    fetch('/api/collaborative-ai', { method: 'POST' })
+  const handleFederationSynthesis = () => {
+    fetch('/api/federation-synthesis', { method: 'POST' })
       .then((res) => res.json())
       .then((data) => alert(data.message));
   };
 
-  const handleRunChipx = () => {
-    fetch('/api/run-chipx-execution', { method: 'POST' })
+  const handleBlockchainAnchor = () => {
+    fetch('/api/blockchain-anchor', { method: 'POST' })
       .then((res) => res.json())
-      .then((data) => alert(data.message));
+      .then((data) => setBlockchainLog((prev) => [...prev, data.message]));
   };
 
-  const handleGovernance = () => {
-    fetch('/api/governance', { method: 'POST' })
+  const handleDistributedExecution = () => {
+    fetch('/api/distributed-execution', { method: 'POST' })
       .then((res) => res.json())
-      .then((data) => setGovernanceLog((prev) => [...prev, data.message]));
+      .then((data) => setDistributedStatus((prev) => [...prev, data.message]));
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-purple-600 to-pink-600 text-white p-8">
       <div className="max-w-4xl mx-auto bg-white bg-opacity-10 p-6 rounded-lg shadow-lg">
-        <h1 className="text-4xl font-bold mb-4">CHIPS Admin Dashboard — Phase 12</h1>
+        <h1 className="text-4xl font-bold mb-4">CHIPS Admin Dashboard — Phase 13</h1>
         <button
-          onClick={handleCollaborativeAI}
+          onClick={handleFederationSynthesis}
           className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded mb-4"
         >
-          Initiate Collaborative AI Execution
+          Initiate AI Federation Synthesis
         </button>
         <button
-          onClick={handleRunChipx}
+          onClick={handleBlockchainAnchor}
           className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded mb-4"
         >
-          Run Real .chipx Module
+          Anchor .chipx to Blockchain
         </button>
         <button
-          onClick={handleGovernance}
+          onClick={handleDistributedExecution}
           className="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded mb-4"
         >
-          Execute Governance Task
+          Trigger Distributed Execution
         </button>
         <h2 className="text-2xl font-bold mb-4">Federation Nodes</h2>
         <ul>
@@ -59,9 +60,15 @@ export default function AdminDashboard() {
             </li>
           ))}
         </ul>
-        <h2 className="text-xl font-bold mt-4">Governance Log:</h2>
+        <h2 className="text-xl font-bold mt-4">Blockchain Anchoring Log:</h2>
         <ul>
-          {governanceLog.map((entry, index) => (
+          {blockchainLog.map((entry, index) => (
+            <li key={index} className="mb-2">{entry}</li>
+          ))}
+        </ul>
+        <h2 className="text-xl font-bold mt-4">Distributed Execution Status:</h2>
+        <ul>
+          {distributedStatus.map((entry, index) => (
             <li key={index} className="mb-2">{entry}</li>
           ))}
         </ul>
