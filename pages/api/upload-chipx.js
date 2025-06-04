@@ -1,8 +1,9 @@
 
 export default function handler(req, res) {
   if (req.method === 'POST') {
-    res.status(200).json({ message: 'Simulated .chipx file uploaded successfully!' });
+    // Simulated upload logic
+    res.status(200).json({ message: 'Simulated .chipx module uploaded successfully.' });
   } else {
-    res.status(405).json({ message: 'Method not allowed' });
+    res.status(405).json({ message: 'Method Not Allowed' });
   }
 }
