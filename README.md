@@ -1,4 +1,3 @@
-
 # CHIPS Admin Dashboard Phase 7.4
 
 ## Overview
@@ -7,13 +6,13 @@ This is the CHIPS Admin Dashboard Phase 7.4 release with Token Gate, CI/CD, READ
 ## Installation
 1. Clone this repository
 2. Install dependencies:
-```bash
+\`\`\`bash
 npm install
-```
+\`\`\`
 3. Run the app:
-```bash
+\`\`\`bash
 npm run dev
-```
+\`\`\`
 
 ## Usage
 - Admin Dashboard available at `/admin_dashboard`
